@@ -49,7 +49,7 @@ export const forgotpassword = async (req, res) => {
         }
         const secret = "deargshvdnj" + oldUser.password;
         const token = jwt.sign({ id: oldUser._id }, secret, { expiresIn: "1d" });
-        const link=`https://e-learning-1-jycy.onrender.com/user/resetpassword/${oldUser._id}/${token}`;
+        const link=`https://llp-qxsy.onrender.com/user/resetpassword/${oldUser._id}/${token}`;
         console.log(link);
         // Using the configured mail transporter and sendLoginMail function
         const transporter = await configuremail();

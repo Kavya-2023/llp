@@ -27,7 +27,7 @@ function Login() {
       return;
     }
     try {
-      const response = await axios.post("https://e-learning-1-jycy.onrender.com/user/login", {
+      const response = await axios.post("https://llp-qxsy.onrender.com/user/login", {
         email,
         password,
       });

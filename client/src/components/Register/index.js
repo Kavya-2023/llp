@@ -22,7 +22,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("https://e-learning-1-jycy.onrender.com/user/signup", {
+      const response = await axios.post("https://llp-qxsy.onrender.com/user/signup", {
         name,
         email,
         password,

@@ -21,10 +21,10 @@ const NavBar11 = () => {
   const fetchUserData = async () => {
     try {
       const [userResponse, coursesResponse] = await Promise.all([
-        axios.get('https://e-learning-1-jycy.onrender.com/user/profile', {
+        axios.get('https://llp-qxsy.onrender.com/user/profile', {
           params: { email: userEmail }
         }),
-        axios.get('https://e-learning-1-jycy.onrender.com/course/getpaidcourses', {
+        axios.get('https://llp-qxsy.onrender.com/course/getpaidcourses', {
           params: { email: userEmail }
         })
       ]);
@@ -55,7 +55,7 @@ const NavBar11 = () => {
   const handleForgotPassword = async () => {
     try {
       const email=userEmail;
-      const response = await axios.post('https://e-learning-1-jycy.onrender.com/user/forgotpassword', { email });
+      const response = await axios.post('https://llp-qxsy.onrender.com/user/forgotpassword', { email });
       if (response.status==200){
          alert("Check Your E-Mail..!")
       }

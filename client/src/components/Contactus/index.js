@@ -13,8 +13,8 @@ const Contactus = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://e-learning-1-jycy.onrender.com/user/contactus', { name, email, phoneNumber });
-      const email_res = await axios.post('https://e-learning-1-jycy.onrender.com/contactus/sendemail', { name, email, phoneNumber });
+      const res = await axios.post('https://llp-qxsy.onrender.com/user/contactus', { name, email, phoneNumber });
+      const email_res = await axios.post('https://llp-qxsy.onrender.com/contactus/sendemail', { name, email, phoneNumber });
 
       if (email_res.data.success === true) {
         alert(email_res.data.message);

@@ -23,7 +23,7 @@ const Courses = () => {
 
   const fetchTotalData = async () => {
     try {
-      const response = await axios.get('https://e-learning-1-jycy.onrender.com/course/getallcourses');
+      const response = await axios.get('https://llp-qxsy.onrender.com/course/getallcourses');
       if (response.status === 200) {
         setTotalData(response.data);
         setCurrentCategory(response.data[0]); // Set initial category
@@ -58,7 +58,7 @@ const Courses = () => {
   const addToCart = async (course_id, course_name, course_price) => {
     const email = localStorage.getItem("email");
     try {
-      const response = await axios.post('https://e-learning-1-jycy.onrender.com/enroll/enroll', { email,  course_id: course_id.toString(), course_name, course_price });
+      const response = await axios.post('https://llp-qxsy.onrender.com/enroll/enroll', { email,  course_id: course_id.toString(), course_name, course_price });
       if (response.data.success === true) {
         console.log("Added successfully");
         navigate('/cart');

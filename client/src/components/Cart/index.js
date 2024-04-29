@@ -103,7 +103,7 @@ const Cart = () => {
 
   const onRemove = (course_id) => {
     const email = localStorage.getItem("email");
-    axios.delete(`https://e-learning-1-jycy.onrender.com/enroll/removecourse?email=${email}&course_id=${course_id}`)
+    axios.delete(`https://llp-qxsy.onrender.com/enroll/removecourse?email=${email}&course_id=${course_id}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           fetchEnrolledCourses();
@@ -119,7 +119,7 @@ const Cart = () => {
 
   const clearCart = () => {
     const email = localStorage.getItem("email");
-    axios.delete(`https://e-learning-1-jycy.onrender.com/enroll/clearcart?email=${email}`)
+    axios.delete(`https://llp-qxsy.onrender.com/enroll/clearcart?email=${email}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           console.log("Cart cleared successfully");
@@ -140,7 +140,7 @@ const Cart = () => {
 
   const fetchEnrolledCourses = () => {
     const email = localStorage.getItem("email");
-    axios.get(`https://e-learning-1-jycy.onrender.com/enroll/enrolledcourses?email=${email}`)
+    axios.get(`https://llp-qxsy.onrender.com/enroll/enrolledcourses?email=${email}`)
       .then(res => {
         if (res && res.data && res.data.success === true) {
           const courses = res.data.enrolledCourses;

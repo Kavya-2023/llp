@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // CORS configuration
-const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in', 'https://e-learning-1-jycy.onrender.com','http://localhost:5000'];
+const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in', 'https://llp-qxsy.onrender.com','http://localhost:5000'];
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
