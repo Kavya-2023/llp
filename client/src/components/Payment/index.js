@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Qrcode from '../../assets/Qrcode.png';
 import './index.css';
-import Navbar from '../Navbar11';
+import Navbar from '../Navbar';
 const PaymentForm = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [showQRCode, setShowQRCode] = useState(false);

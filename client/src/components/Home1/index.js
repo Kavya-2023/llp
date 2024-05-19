@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Navbar11 from '../Navbar11';
+import NavBar from '../Navbar';
 import Footer from '../Footer';
 import { motion } from 'framer-motion';
 import desktopImg from '../../assets/desktop-landing-image.jpg';
@@ -10,8 +10,7 @@ import serviceImg2 from '../../assets/service-img-2.avif';
 import serviceImg3 from '../../assets/service-img-3.avif';
 import wcu1 from '../../assets/wcu-1.avif';
 import wcu2 from '../../assets/wcu-2.avif';
-import {Model} from 'reactstrap';
-import Register from '../Register'
+import Register from '../Register';
 import './index.css';
 
 const Home = () => {
@@ -53,7 +52,24 @@ useEffect(() => {
   
   return (
     <>
-      <Navbar11 />
+      <NavBar/>
+      <div className='logos treding-skills-container'>
+        <h3 className='treding-heading'>Trending Skills</h3>
+         <div className='logos-slide'>
+            <div className='trending-logo block'>
+              <p>Artificial Intelligence</p>
+            </div>
+            <div className='trending-logo block'>
+              <p>Full Stack Development</p>
+            </div>
+            <div className='trending-logo block'>
+              <p>Fintech</p>
+            </div>
+            <div className='trending-logo block'>
+              <p>Game Tech</p>
+            </div>
+         </div>
+      </div>
       <div className="home-container">
         <div className="home-content">
           <motion.h1
@@ -95,7 +111,9 @@ useEffect(() => {
                 ease: "easeIn",
                 duration: 1
               }}
-              className="glow-on-hover" type="button" >UPGRADE YOUR SKILLS</motion.button>
+              className="glow-on-hover" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+     Upgrade Your Skills
+</motion.button>
           </Link>
           
         </div>
@@ -394,6 +412,20 @@ useEffect(() => {
         </div>
       </div>
       
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <Register/>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+     </div>
+
       <Footer />
     </>
   );

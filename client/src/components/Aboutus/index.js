@@ -1,11 +1,11 @@
 import React from 'react'
 import './index.css';
-import Navbar11 from '../Navbar11';
+import NavBar from '../Navbar';
 import aboutUs from '../../assets/aboutus.jpg'
 const Aboutus = () => {
   return (
     <div>
-        <Navbar11/>
+        <NavBar/>
          <div className="about-us-section">
           
           <div className="container-1">

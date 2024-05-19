@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Navbar11 from '../Navbar11';
+import Navbar from '../Navbar';
 import './index.css';
 
 const Contactus = () => {
@@ -37,7 +37,7 @@ const Contactus = () => {
 
   return (
     <div>
-      <Navbar11 />
+      <Navbar />
       <div className="contact-us-container">
         <div className='contactus-form-container'>
           <h1>Contact Us</h1>

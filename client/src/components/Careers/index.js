@@ -1,23 +1,50 @@
 import React from 'react';
-import NavBar from '../Navbar11';
+import NavBar from '../Navbar';
 import './index.css';
 
 const Careers = () => {
   return (
     <>
     <NavBar/>
-    <div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
-<div class="content">
-  <div className="careers-container">
-      <h2>Join the Revolution!</h2>
-      <p>
-        Are you ready to be part of a revolutionary skill-based platform? We're looking for talented individuals to join our team.
-        Send us your valuable curriculum vitae to <a href="mailto:careers@nanoquesttech.in">careers@nanoquesttech.in</a>.
-      </p>
-    </div>
-</div>
+    <div className='career-cards-container'>
+      <h3>Join Skill Revolution Platform</h3>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>HR Associate</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button>
+        </a>
+      </div>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>Graphic Designer</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button>
+        </a>
+      </div>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>Software Developer(wordpress,Woo Commerce)</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button> 
+        </a>
+      </div>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>Procurement specialist</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button>
+        </a>
+      </div>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>Digital Martketing</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button>
+        </a>
+      </div>
+      <div className='careers-card'>
+        <h4 className='apply-card-heading'>Sales</h4>
+        <a href="https://airtable.com/app8mmy650SSrbZWy/shr2vNIadJYG9KKdO">
+          <button className='apply-button'>Apply</button>
+        </a>
+      </div>
+  </div>
     </>
     
   );

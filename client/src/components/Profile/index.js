@@ -2,7 +2,7 @@ import React, { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios  from 'axios';
 import './index.css';
-import Navbar from '../Navbar11';
+import Navbar from '../Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 

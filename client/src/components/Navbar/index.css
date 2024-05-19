@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+.main-logo {
+    width: 40px;
+    height: 40px;
+}
+.nav {
+    padding: 0 100px;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid #081F62;
+    
+}
+.navbar-container .dropdown-item:hover {
+    border-bottom: 2px solid #081F62;
+}
+.profiledropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    top: 70%;
+    right: 0;
+    width: 300px;
+    height: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.nav-item:hover .profiledropdown {
+    display: block;
+}
+
+
+
+
+/*profile card css*/
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-header-left {
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    margin: .5rem;
+    border-radius: 10px;
+    border: 3px solid #081F62;
+    text-align: center;
+    font-weight: bold;
+}
+
+.profile-header-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: .7rem;
+    color: orange;
+}
+
+.fortgot-password {
+    color: orange;
+}
+
+.fortgot-password:hover {
+    color: #051747;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-btn {
+    border: 1px solid lightgray;
+    text-align: center;
+    padding: .2rem;
+    margin-bottom: .2rem;
+    font-size: 1rem;
+    color:#081F62 ;
+}
+.profile-btn:hover{
+    background: #051747;
+    color:white;
+}
+.user-icon{
+    color:#081F62
+}
+
+.btn-login{
+    background-color: #081F62;
+    color: #fff;
+    padding: .7rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn-login:hover{
+    background: transparent;
+    color:#081F62;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+/*tooltip css*/
+ #tooltip {
+     position: relative;
+     cursor: pointer;
+     border-bottom: 2px dotted;
+     padding: 7px;
+     font-weight: bold;
+ }
+
+ #tooltiptext {
+     position: absolute;
+     left: 0;
+     bottom: -150%;
+     transform: translateX(-50%);
+     background-color: #081F62;
+     color: #fff;
+     white-space: nowrap;
+     padding: 10px 15px;
+     border-radius: 7px;
+     visibility: hidden;
+     opacity: 0;
+     transition: opacity 0.5s ease;
+ }
+
+ #tooltiptext::before {
+     content: "";
+     position: absolute;
+     left: 55%;
+     bottom: 100%;
+     transform: translateX(-50%);
+     border: 15px solid;
+     border-color: transparent transparent #081F62 transparent;
+ }
+
+ #tooltip:hover #tooltiptext {
+     bottom: -200%;
+     visibility: visible;
+     opacity: 1;
+ }

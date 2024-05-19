@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../Navbar11';
+import NavBar from '../Navbar';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -79,7 +79,8 @@ const Courses = () => {
       <NavBar />
       <div className='courses-container'>
         <div className='left-bar'>
-          <div className='category-buttons-container'>
+          <h3 className='heading'>Nanoquest Skills</h3>
+          {/*<div className='category-buttons-container'>
             <label style={{ color: 'black' }}>
               <input
                 type="radio"
@@ -110,7 +111,7 @@ const Courses = () => {
               />
               Premium
             </label>
-          </div>
+  </div>*/}
           {totalData.map((category) => (
             <div
               key={category.id}
@@ -128,11 +129,11 @@ const Courses = () => {
           </div>
           <div className='right-bar-container'>
             {currentCourses.map(course => (
-              <div key={course._id} className='course-cards-right-bar'>
+              <div key={course._id} className='course-cards-right-bar card'>
                 <p>{course.course}</p>
                 <div className='course-card-content'>
-                  <p>{course.price_in_rupees === 0 ? 'Free' : <><FontAwesomeIcon icon={faRupeeSign} /> {course.price_in_rupees}</>}</p>
-                  <button onClick={() => addToCart(course._id, course.course, course.price_in_rupees)}>Enroll</button>
+                  <p>{/*{course.price_in_rupees === 0 ? 'Free' : <><FontAwesomeIcon icon={faRupeeSign} /> {course.price_in_rupees}</>}*/}Free</p>
+                  <button onClick={() => addToCart(course._id, course.course,0)}>Enroll</button>
                 </div>
               </div>
             ))}

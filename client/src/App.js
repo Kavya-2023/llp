@@ -6,7 +6,7 @@ import Home1 from './components/Home1';
 import Contactus from './components/Contactus';
 import Login from './components/Login' 
 import SignUp from './components/Register'
-import Pages from './components/Pages' 
+
 import Footer from './components/Footer'; 
 import Courses from './components/Courses' 
 
@@ -28,6 +28,8 @@ import ReturnsAndRefunds from './components/ReturnsAndRefunds';
 import Teams from './components/Teams';
 import Careers from './components/Careers'
 import NotFound from './components/NotFound'
+
+
 const App = () => {
    const [cartCourses, setCartCourses] = useState([]);
 
@@ -40,7 +42,7 @@ const App = () => {
     <Route exact path="/" element={<Home1 />} />  
     <Route exact path="/login" element={<Login/>}/> 
     <Route exact path="/Signup" element={<SignUp/>}/> 
-    <Route exact path="/page" element={<Pages/>}/>  
+     
     <Route exact path="/foot" element={<Footer/>}/>  
     <Route exact path="/courses" element={<Courses/>}/> 
     

@@ -13,7 +13,7 @@ const Cart = () => {
   // Fetch the enrolled courses and total cost
   const email = localStorage.getItem("email");
   const courseIds = enrolledCourses.map(course => course.course_id); 
-  const totalAmount = totalCost * 100; // Convert total cost to cents
+  const totalAmount = totalCost * 100; 
 
   // Make a request to create a new order
   axios.post(`https://e-learning-1-jycy.onrender.com/order`, {
@@ -171,19 +171,18 @@ const Cart = () => {
           {enrolledCourses.map(course => (
             <li key={course._id} className="cart-item">
               <p style={{fontSize: "1.3rem"}}>{course.course_name}</p>
-              <p style={{fontSize: "1rem", marginTop: "10px"}}>{course.course_price}</p>
+              
               <button className="remove-button" onClick={() => onRemove(course.course_id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
-      <p style={{fontSize: "1.3rem", fontWeight: "bold"}}>Total: {totalCost}</p>
-      <button onClick={clearCart} className="clear-button">Clear Cart</button>
+      <button onClick={clearCart} className="clear-button">Clear Skills</button>
       <Link to="#">
-        <button disabled={enrolledCourses.length === 0} className="checkout-button" onClick={(e) => paymentHandler(e)}>Checkout</button>
+        <button disabled={enrolledCourses.length === 0} className="checkout-button" onClick={(e) => paymentHandler(e)}>Proceed To Payment</button>
       </Link>
       <Link to='/courses'>
-        <button className="add-more-button">Add More</button>
+        <button className="add-more-button">Add More Skills</button>
       </Link>
     </div>
   );
