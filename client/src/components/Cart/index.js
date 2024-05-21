@@ -1,105 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { FaTrash, FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import NavBar from '../Navbar';
 import './index.css';
 
 const Cart = () => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
-  const [totalCost, setTotalCost] = useState(0);
-
-  const paymentHandler = (e) => {
-  e.preventDefault();
-
-  // Fetch the enrolled courses and total cost
-  const email = localStorage.getItem("email");
-  const courseIds = enrolledCourses.map(course => course.course_id); 
-  const totalAmount = totalCost * 100; 
-
-  // Make a request to create a new order
-  axios.post(`https://e-learning-1-jycy.onrender.com/order`, {
-    amount: totalAmount,
-    currency: "INR",
-    receipt: "sdfghbfg",
-  })
-  .then(response => {
-    const order = response.data;
-
-    // Configure Razorpay options
-    var options = {
-      key: "rzp_test_iIdXGzwGVLePDc",
-      amount: order.amount,
-      currency: order.currency,
-      name: "Nanoquest LLP",
-      description: "Test Transaction",
-      image: "https://example.com/your_logo",
-      order_id: order.id,
-      handler: function (response) {
-        // Upon successful payment, enroll the user in the selected courses
-        axios.post('https://e-learning-1-jycy.onrender.com/order/validate', response)
-          .then(validateRes => {
-            // If payment is validated successfully, proceed to course enrollment
-            const orderId = validateRes.data.orderId;
-            const paymentId = validateRes.data.paymentId;
-
-            axios.post('https://e-learning-1-jycy.onrender.com/enroll/createpaidcourses', {
-              email,
-              course_ids: courseIds, 
-              order_id: orderId,
-              payment_id: paymentId
-            })
-            .then(res => {
-              if (res.data.success) {
-                console.log("Courses added successfully");
-                clearCart(); 
-              } else {
-                console.error("Failed to add courses:", res.data.message);
-              }
-            })
-            .catch(err => {
-              console.error("Error adding courses:", err);
-              clearCart();
-            });
-          })
-          .catch(error => {
-            console.error("Error validating order:", error);
-          });
-      },
-      prefill: {
-        name: "Kavya",
-        email: "kavya@example.com",
-        contact: "9000090000"
-      },
-      notes: {
-        address: "Razorpay Corporate Office"
-      },
-      theme: {
-        color: "#3399cc"
-      }
-    };
-
-    // Initialize Razorpay
-    var rzp1 = new window.Razorpay(options);
-
-    // Handle payment failure
-    rzp1.on('payment.failed', function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
-    });
-
-    // Open the Razorpay payment modal
-    rzp1.open();
-  })
-  .catch(error => {
-    console.error("Error creating order:", error);
-  });
-};
-
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   const onRemove = (course_id) => {
     const email = localStorage.getItem("email");
@@ -124,7 +33,6 @@ const Cart = () => {
         if (res && res.data && res.data.success === true) {
           console.log("Cart cleared successfully");
           setEnrolledCourses([]);
-          setTotalCost(0);
         } else {
           console.error("Failed to clear cart:", res.data.message);
         }
@@ -132,6 +40,35 @@ const Cart = () => {
       .catch(err => {
         console.error("Error clearing cart:", err);
       });
+  };
+
+  const handleCheckout = async () => {
+    const email = localStorage.getItem("email");
+    const course_ids = enrolledCourses.map(course => course.course_id);
+    try {
+      const response = await axios.post("https://llp-qxsy.onrender.com/enroll/createpaidcourses", {
+        email,
+        course_ids
+      });
+      if (response.data.success) {
+        console.log("Checkout successful:", response.data.message);
+        setPopupMessage("Successfully enrolled in courses!");
+        setShowPopup(true);
+        setEnrolledCourses([]);
+        clearCart()
+        setTimeout(() => setShowPopup(false), 3000);
+      } else {
+        console.error("Checkout failed:", response.data.message);
+        setPopupMessage("Checkout failed. Please try again.");
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+      }
+    } catch (err) {
+      console.error("Error during checkout:", err);
+      setPopupMessage("An error occurred. Please try again.");
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 3000);
+    }
   };
 
   useEffect(() => {
@@ -144,14 +81,8 @@ const Cart = () => {
       .then(res => {
         if (res && res.data && res.data.success === true) {
           const courses = res.data.enrolledCourses;
-          let total = 0;
-          courses.forEach(course => {
-            if (course.course_price !== "Free") {
-              total += parseInt(course.course_price);
-            }
-          });
+          console.log(courses);
           setEnrolledCourses(courses);
-          setTotalCost(total);
         } else {
           console.error("Failed to fetch enrolled courses:", res.data.message);
         }
@@ -162,28 +93,72 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-container">
-      <h2 style={{textAlign: "center", fontSize: "30px", fontWeight: "500", color: "blue"}}>Cart</h2>
-      {enrolledCourses.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul className="cart-items">
-          {enrolledCourses.map(course => (
-            <li key={course._id} className="cart-item">
-              <p style={{fontSize: "1.3rem"}}>{course.course_name}</p>
-              
-              <button className="remove-button" onClick={() => onRemove(course.course_id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
+    <div className="">
+      <NavBar />
+      <div className="pt-20 mx-auto max-w-6xl px-4">
+        <h2 className="text-gray-800 text-2xl text-center mb-6">Bag Your Skills</h2>
+        <div className="grid grid-cols-3 gap-6">
+          <div className="col-span-2">
+            <h3 className="text-xl font-semibold mb-4 text-zinc-700">Course Name</h3>
+            <div className="grid grid-cols-1 gap-4">
+              {
+                enrolledCourses.length<= 0
+                ?
+                <h4 className='text-xl text-center text-gray-500'>Your Cart is Empty</h4>
+                :
+                <>
+                {enrolledCourses.map((item, index) => (
+                <div key={index} className="bg-white shadow-md rounded-lg p-4 border border-gray-200 flex justify-between items-center">
+                  <h4 className="text-sm text-gray-400 font-semibold">{item.course_name}</h4>
+                  <FaTrash
+                    onClick={() => onRemove(item.course_id)}
+                    className="text-red-500 cursor-pointer hover:text-red-600"
+                    size={24}
+                  />
+                </div>
+              ))}</>
+              }
+              <Link to='/courses'>
+                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mx-1">Add More</button>
+              </Link>
+            </div>
+          </div>
+          <div className="bg-amber-200 p-4 rounded shadow-md border border-gray-300 max-h-[300px]">
+            <h3 className="text-xl font-semibold bg-transparent text-gray-800">Summary</h3>
+            <p>Total Enrolled Skills: <span className='bg-transparent'>{enrolledCourses.length}</span></p>
+            <div className='flex bg-transparent'>
+              <button
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mx-1 flex items-center justify-center"
+                onClick={handleCheckout}
+                disabled={enrolledCourses.length <= 0}
+              >
+                <FaShoppingCart className="mr-2 bg-transparent" />
+                Checkout
+              </button>
+              <button
+                onClick={clearCart}
+                className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                disabled={enrolledCourses.length <= 0}
+              >
+                ClearCart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h3 className="text-xl font-semibold mb-4">{popupMessage}</h3>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
-      <button onClick={clearCart} className="clear-button">Clear Skills</button>
-      <Link to="#">
-        <button disabled={enrolledCourses.length === 0} className="checkout-button" onClick={(e) => paymentHandler(e)}>Proceed To Payment</button>
-      </Link>
-      <Link to='/courses'>
-        <button className="add-more-button">Add More Skills</button>
-      </Link>
     </div>
   );
 };

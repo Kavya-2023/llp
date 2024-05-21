@@ -48,15 +48,13 @@ export const removeCourse = async (req, res) => {
 
 
 export const createPaidCourses = async (req, res) => {
-  const { email, course_ids, order_id, payment_id } = req.body;
+  const { email, course_ids} = req.body;
 
   try {
     
     const createdCourses = await PaidCourses.create({
       email,
       course_ids,
-      order_id,
-      payment_id
     });
 
     res.status(201).json({ success: true, data: createdCourses });

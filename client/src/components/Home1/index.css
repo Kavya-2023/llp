@@ -387,7 +387,7 @@ p{
 
 .logos {
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap !important;
   margin-top: 5rem;
 }
 .logos-slide {

@@ -3,7 +3,7 @@ import NavBar from '../Navbar';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const Courses = () => {
