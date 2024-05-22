@@ -10,7 +10,7 @@ import SignUp from './components/Register'
 import Footer from './components/Footer'; 
 import Courses from './components/Courses' 
 
-
+import SubCourse from './components/SubCourse';
 
 import Payment from './components/Payment';
 import Cart from './components/Cart';
@@ -63,7 +63,9 @@ const App = () => {
     <Route exact path='/blog3' element={<Blog3/>}/>
     <Route exact path='/teams' element={<Teams/>}/>
     <Route exact path='/careers' element={<Careers/>}/>
+    <Route exact path='/subcourse/:id' element={<SubCourse/>}/>
     <Route path="*" render={(props) => <NotFound {...props} status={404} />} />
+
     </Routes>
   </BrowserRouter>
   )

@@ -81,3 +81,19 @@ export const getPaidCourses = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 }
+
+export const getSubCourses = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const category = await Course.findById(id);
+    if (!category) {
+      return res.status(404).json({ message: 'Category not found' });
+    }
+    const subCourses = category.courses;
+    res.status(200).json(subCourses);
+  } catch (error) {
+    console.error('Error fetching subcourses:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}; 

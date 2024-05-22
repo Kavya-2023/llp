@@ -81,7 +81,6 @@ const Cart = () => {
       .then(res => {
         if (res && res.data && res.data.success === true) {
           const courses = res.data.enrolledCourses;
-          console.log(courses);
           setEnrolledCourses(courses);
         } else {
           console.error("Failed to fetch enrolled courses:", res.data.message);
@@ -93,13 +92,13 @@ const Cart = () => {
   };
 
   return (
-    <div className="">
+    <div className="min-h-screen">
       <NavBar />
       <div className="pt-20 mx-auto max-w-6xl px-4">
         <h2 className="text-gray-800 text-2xl text-center mb-6">Bag Your Skills</h2>
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2">
-            <h3 className="text-xl font-semibold mb-4 text-zinc-700">Course Name</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="sm:col-span-2 lg:col-span-2">
+            
             <div className="grid grid-cols-1 gap-4">
               {
                 enrolledCourses.length<= 0
@@ -107,8 +106,11 @@ const Cart = () => {
                 <h4 className='text-xl text-center text-gray-500'>Your Cart is Empty</h4>
                 :
                 <>
+                <h3 className="text-xl font-semibold mb-4 text-zinc-700">Course Name</h3>
                 {enrolledCourses.map((item, index) => (
+                  
                 <div key={index} className="bg-white shadow-md rounded-lg p-4 border border-gray-200 flex justify-between items-center">
+
                   <h4 className="text-sm text-gray-400 font-semibold">{item.course_name}</h4>
                   <FaTrash
                     onClick={() => onRemove(item.course_id)}
@@ -123,12 +125,12 @@ const Cart = () => {
               </Link>
             </div>
           </div>
-          <div className="bg-amber-200 p-4 rounded shadow-md border border-gray-300 max-h-[300px]">
+          <div className="bg-amber-200 p-4 rounded shadow-md border border-gray-300 lg:max-h-[300px]">
             <h3 className="text-xl font-semibold bg-transparent text-gray-800">Summary</h3>
             <p>Total Enrolled Skills: <span className='bg-transparent'>{enrolledCourses.length}</span></p>
-            <div className='flex bg-transparent'>
+            <div className='flex bg-transparent flex-col lg:flex-row items-center'>
               <button
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mx-1 flex items-center justify-center"
+                className="mt-2 lg:mt-0 mb-2 lg:mb-0 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mx-1 flex items-center justify-center"
                 onClick={handleCheckout}
                 disabled={enrolledCourses.length <= 0}
               >
@@ -137,7 +139,7 @@ const Cart = () => {
               </button>
               <button
                 onClick={clearCart}
-                className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                className="mt-2 mb-2 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
                 disabled={enrolledCourses.length <= 0}
               >
                 ClearCart

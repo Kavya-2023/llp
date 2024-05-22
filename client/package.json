@@ -20,6 +20,7 @@
     "framer-motion": "^11.0.25",
     "razorpay": "^2.9.2",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.2.11",
     "react-bootstrap": "^2.10.2",
     "react-card-flip": "^1.2.2",
     "react-dom": "^18.2.0",
@@ -59,8 +60,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.3"
   }
 }
