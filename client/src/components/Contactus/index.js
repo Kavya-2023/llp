@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
 import './index.css';
+import Footer from '../Footer';
 
 const Contactus = () => {
   const [name, setName] = useState("");
@@ -87,6 +88,7 @@ const Contactus = () => {
           ></iframe>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

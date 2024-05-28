@@ -2,6 +2,7 @@ import React from 'react'
 import './index.css';
 import NavBar from '../Navbar';
 import aboutUs from '../../assets/aboutus.jpg'
+import Footer from '../Footer';
 const Aboutus = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const Aboutus = () => {
             </p>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }

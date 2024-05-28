@@ -6,9 +6,12 @@ import blog3 from '../../assets/blog3.jpg'
 import {Link} from 'react-router-dom'
 import {motion} from 'framer-motion';
 import {fadeIn} from '../../variants'
+import NavBar from '../Navbar';
+import Footer from '../Footer';
 const Blog = () => {
   return (
     <>
+    <NavBar/>
     <h1 className='blog-heading'>Our Blogs</h1>
     <div className='blogs-container'>
       
@@ -49,6 +52,7 @@ const Blog = () => {
         </Link>
       </motion.div>
     </div>
+    <Footer/>
     </>
     
   )

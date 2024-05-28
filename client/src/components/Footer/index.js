@@ -3,91 +3,98 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faFacebook, faYoutube, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import './index.css';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+
+const sections=[
+  {
+    title:"Quick Links",
+    items:['Home','Courses','Blog','AboutUs','Teams','Careers']
+  },
+  {
+    title:"Company",
+    items:["ContactUs","Privacy Policy","Terms and Conditions","Refund and Cancellation"]
+  }
+]
+
+const socialicons=[
+  {
+    icon:FaFacebook,
+    link:"https://www.facebook.com/nanoquestet",
+  },
+  {
+    icon:FaInstagram,
+    link:"https://www.instagram.com/nanoquest",
+  },
+  {
+    icon:FaYoutube,
+    link:"https://youtube.com/shorts/2zRkc4utsLM"
+  },
+  {
+    icon:FaTwitter,
+    link:"https://www.twitter.com/nanoquestedtech"
+  },
+  {
+    icon:FaLinkedin,
+    link:"https://www.linkedin.com/company/100962715"
+  }
+]
 
 function Footer() {
   
 
   return (
-    <footer className="footer-container pt-5 m-3">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <h5>Quick Links</h5>
-            <ul className="list-unstyled">
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/courses'>Courses</Link></li>
-              <li><Link to='/blog'>Blog</Link></li>
-              <li><Link to='/aboutus'>About us</Link></li>
-              <li><Link to='/teams'>Teams</Link></li>
-              <li><Link to='/careers'>Careers</Link></li>
-            </ul>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <h5>Company</h5>
-            <ul className="list-unstyled">
-              <li><Link to='/contactus'>Contact us</Link></li>
-              <li><Link to='/privacypolicy'>Privacy Policy</Link></li>
-              <li><Link to='/termsandconditions'>Terms and Conditions</Link></li>
-              <li><Link to='/refundandcancellation'>Refund and Cancellation</Link></li>
-            </ul>
-          </div>
-          <div className="col-lg-4 col-md-12 mb-4">
-            <h5>Contact Us</h5>
-            <div>
-              <FontAwesomeIcon icon={faMapMarkerAlt}/>&nbsp;
-              <span className='address-text'>We work, Roshini Tech Hub, PFS Club House, EPIP Zone, Chinnapanna Halli, Bengaluru, Karnataka 560037.</span>
+    <>
+      <div className='w-full mt-24 bg-slate-900 text-gray-300 py-2 px-2 sm:pl-3 md:pl-3' >
+        <div className='bg-transparent max-w-[1240px] mx-auto grid sm:grid-cols-1  md:grid-cols-2   lg:grid-cols-3 border-b-2 border-gray-600 py-8'>
+          {
+            sections.map((item,index)=>(
+              <div className='bg-transparent' key={index}>
+                <h6 className='font-bold uppercase pt-2 bg-transparent'>{item.title}</h6>
+                <ul className='bg-transparent flex-start flex flex-col'>
+                  {item.items.map((it,i)=>(
+                    <Link to={`/${it.toLowerCase()}`} className='no-underline hover:no-underline'>
+                    <li key={i} className=' bg-transparent py-1 text-gray-500 hover:text-white cursor-pointer'>
+                      {it}
+                    </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+          <div className="bg-transparent">
+            <h6 className='font-bold uppercase pt-2 bg-transparent'>Contact Us</h6>
+            <div className='bg-transparent'>
+              <FontAwesomeIcon icon={faMapMarkerAlt} className='bg-transparent'/>&nbsp;
+              <span className='bg-transparent py-1 text-gray-500 hover:text-white cursor-pointer'>We work, Roshini Tech Hub, PFS Club House, EPIP Zone, Chinnapanna Halli, Bengaluru, Karnataka 560037.</span>
             </div>
-            <div>
-              <FontAwesomeIcon icon={faPhone}/>&nbsp;
-              <span className='address-text'>: 040-49170923</span>
+            <div className='bg-transparent'>
+              <FontAwesomeIcon icon={faPhone} className='bg-transparent'/>&nbsp;
+              <span className='bg-transparent py-1 text-gray-500 hover:text-white cursor-pointer'> 040-49170923</span>
             </div>
-            <div>
-              <FontAwesomeIcon icon={faEnvelope}/>&nbsp;<span className='address-text'>:support@nanoquesttech.in</span>
+            <div className='bg-transparent'>
+              <FontAwesomeIcon icon={faEnvelope} className='bg-transparent'/>&nbsp;<span className='bg-transparent py-1 text-gray-500 hover:text-white cursor-pointer'> support@nanoquesttech.in</span>
             </div>
           </div>
         </div>
-      </div>
-      <div className="container-fluid bg-dark text-white py-3">
-        <div className="container bg-dark">
-          <div className="row align-items-center bg-dark">
-            <div className="col-md-12 bg-dark text-center">
+        <div className='bg-slate-900 grid grid-cols-1 place-items-center'>
+          <div className="bg-transparent">
               © 2023 Nanoquest All rights reserved.
             </div>
-            <div className="col-md-12 bg-dark">
-              <ul className="list-inline social-media bg-dark text-center">
-                <li className="list-inline-item bg-dark">
-                  <a href="https://www.facebook.com/nanoquestet" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faFacebook} className='footer-icon' />
-                  </a>
-                </li>
-                <li className="list-inline-item bg-dark">
-                  <a href="https://www.instagram.com/nanoquest" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faInstagram} className='footer-icon' />
-                  </a>
-                </li>
-                <li className="list-inline-item bg-dark">
-                  <a href="https://www.twitter.com/nanoquestedtech" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faTwitter} className='footer-icon' />
-                  </a>
-                </li>
-                <li className="list-inline-item bg-dark">
-                  <a href="https://www.linkedin.com/company/100962715" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faLinkedin} className='footer-icon' />
-                  </a>
-                </li>
-                <li className="list-inline-item bg-dark" >
-                  <a href="https://youtube.com/shorts/2zRkc4utsLM" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faYoutube} className='footer-icon' />
-                  </a>
-                </li>
+            <div className="bg-transparent ">
+              <ul className='bg-transparent flex justify-between text-2xl w-[200px]'>
+                {
+                  socialicons.map((item,ind)=>{
+                    return <a href={`${item.link}`}>
+                      <item.icon key={ind} className='bg-transparent text-white hover:text-gray-400 cursor-pointer'/>
+                    </a>
+                  })
+                }
               </ul>
             </div>
-          </div>
         </div>
       </div>
-    </footer>
+    </>
   );
 }
 

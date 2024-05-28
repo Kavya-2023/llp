@@ -25,7 +25,7 @@ export const getEnrolledCourses = async (req, res) => {
 };
 
 export const clearCart = async (req, res) => {
-    const { email} = req.query; 
+    const { email} = req.body; 
     try {
         await Enrollment.deleteMany({ email});
         return res.status(200).json({ success: true, message: "Cart cleared successfully" });
@@ -48,13 +48,15 @@ export const removeCourse = async (req, res) => {
 
 
 export const createPaidCourses = async (req, res) => {
-  const { email, course_ids} = req.body;
+  const { email, course_ids,order_id,payment_id} = req.body;
 
   try {
     
     const createdCourses = await PaidCourses.create({
       email,
       course_ids,
+      order_id,
+      payment_id,
     });
 
     res.status(201).json({ success: true, data: createdCourses });
@@ -63,4 +65,5 @@ export const createPaidCourses = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to create paid courses" });
   }
 };
+
 

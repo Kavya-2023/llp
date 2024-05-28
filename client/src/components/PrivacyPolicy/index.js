@@ -1,9 +1,14 @@
 import React from 'react';
 import './index.css';
+import Footer from '../Footer';
+import NavBar from '../Navbar';
 
 const PrivacyPolicy = () => {
   return (
+    <>
+    <NavBar/>
     <div className="privacy-policy-container">
+      
       <h1>Privacy Policy</h1>
 
       <div className="section">
@@ -62,6 +67,8 @@ const PrivacyPolicy = () => {
         <p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send an email to support@nanoquesttech.in.</p>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

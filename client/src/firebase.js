@@ -4,7 +4,6 @@ import {
   getAuth,
   signInWithPopup,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 import {
@@ -17,14 +16,15 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC5cjUBCOzw-qfdWjzM-kaf5a-0m1HIHAI",
-  authDomain: "nanoquest-ddfbf.firebaseapp.com",
-  projectId: "nanoquest-ddfbf",
-  storageBucket: "nanoquest-ddfbf.appspot.com",
-  messagingSenderId: "383486670600",
-  appId: "1:383486670600:web:8a99ee30bbe3b41ec15ebd",
-  measurementId: "G-8TM0PBJZRZ"
+  apiKey: "AIzaSyDAPUZ_uww0KOHBWcv55Za6o7e6Y4HWbUM",
+  authDomain: "nanoquest-a5f63.firebaseapp.com",
+  projectId: "nanoquest-a5f63",
+  storageBucket: "nanoquest-a5f63.appspot.com",
+  messagingSenderId: "269386622387",
+  appId: "1:269386622387:web:60099a4321f437704b97c6",
+  measurementId: "G-F3TNRH25YF"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -36,6 +36,7 @@ const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
+    console.log(user.email)
     localStorage.setItem('email', user.email);
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
@@ -47,7 +48,7 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
-    // Redirect to '/'
+
     window.location.href = '/';
   } catch (err) {
     console.error(err);
@@ -65,7 +66,6 @@ const createUserWithEmail = async (email, password) => {
       email,
     });
     localStorage.setItem("email", email);
-    // Redirect to '/'
     window.location.href = '/';
   } catch (err) {
     console.error(err);
@@ -73,15 +73,6 @@ const createUserWithEmail = async (email, password) => {
   }
 };
 
-const sendPasswordReset = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
 
 const logout = () => {
   signOut(auth);
@@ -92,6 +83,5 @@ export {
   db,
   signInWithGoogle,
   createUserWithEmail,
-  sendPasswordReset,
   logout,
 };

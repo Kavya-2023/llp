@@ -6,17 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser ,faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { auth } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 
 import './index.css';
 
-const NavBar = () => {
+
+const NavBar = ({toggleLoginPopup}) => {
    const location = useLocation();
    const [userData, setUserData] = useState(null);
    const [isProfileDropdown, setIsProfileDropdown] = useState(false);
    const [enrolledCourses, setEnrolledCourses] = useState([]);
-   const [user] = useAuthState(auth);
    
 
    const token = localStorage.getItem("token");
@@ -71,6 +70,8 @@ const NavBar = () => {
     }
   }, [token, userEmail]);
 
+  
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='navbar-container fixed-top' style={{  paddingLeft: '80px', paddingRight: '80px', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
       <Navbar.Brand href="/">
@@ -94,51 +95,51 @@ const NavBar = () => {
             {userEmail ? (
           <li className='nav-item' onMouseEnter={toggleProfileDropdown} onMouseLeave={toggleProfileDropdown}>
             <Link to="#" className="userLink">
-              <div style={{ fontSize: "17px"}} className='user-icon' ><FontAwesomeIcon icon={faUser} /></div>
+              <div style={{ fontSize: "17px"}} className='user-icon' ><FontAwesomeIcon icon={faUser} className='bg-transparent'/></div>
             </Link>
             <ul className={`profiledropdown ${isProfileDropdown ? 'active' : ''}`}>
               {userData ? (
-                <div className="profile-card-content">
-                  <div className="profile-header">
-                    <div className="profile-header-left" s>{userData.name[0].toUpperCase()}</div>
-                    <div className="profile-header-right">
-                      <h5 style={{textAlign:"center",fontSize:"1rem"}}>{userData.name}</h5>
-                      <p style={{textAlign:"center",fontSize:"0.8rem"}}>{userData.email}</p>
-                    </div>
-                  </div>
-                  <div className="profile-courses-card">
-                    <h6 style={{color:"black",textDecoration:"underline"}}>Enrolled Skills:</h6>
-                    <ul>
-                    {enrolledCourses.map((course, index) => (
-                      <li key={index} style={{color:"darkgrey"}}>{course}</li>
-                    ))}
-                  </ul>
-                  </div>
-                </div>
+                <div className="w-1/3 mt-4 rounded-lg">
+                      <div className="flex items-center justify-center w-20 h-20 bg-gray-600 text-white font-bold rounded-full ml-24 text-xl">
+                               {userEmail[0].toUpperCase()}
+                      </div>
+                      <div className='mt-4'>
+                          <h6 className="text-sm font-semibold text-left">EnrolledSkills:</h6>
+                            <ul className='list-disc pl-4 text-left text-gray-400'>
+                                {enrolledCourses.map((course, index) => (
+                                   <li key={index}>{course}</li>
+                                 ))}
+                       </ul>
+                      </div>
+                     </div>
+
               ) : (
                 <p style={{color:"lightgrey"}}>Loading...</p>
               )}
-              <div className="profile-buttons-box">
-              <p className="profile-btn">
-                  Settings
-              </p>
-              <p className="profile-btn">
-                <Link to='/cart'>Cart</Link>
-              </p>
-              <p onClick={handleLogout} className="profile-btn">
-                  Logout
-              </p>
+              <div className="flex flex-col items-center border-t border-gray-200 mt-2 pt-2">
+                    <button className="w-full text-center text-white  bg-slate-500 p-1 hover:bg-slate-800">
+                      <Link to='/cart' className='no-underline hover:no-underline text-white text-sm'>Cart</Link>
+                    </button>
+                    <button onClick={handleLogout} className="w-full text-center text-white  mt-1 bg-slate-500 p-1 hover:bg-slate-800">
+                      <Link to='#' className='no-underline hover:no-underline text-white text-sm'>Logout</Link>
+                    </button>
               </div>
-              <p className="fortgot-password"  onClick={handleForgotPassword}>Change Password</p>
+              <p className="text-center text-blue-500 hover:text-orange-400 cursor-pointer mt-2 text-sm" onClick={handleForgotPassword}>Change Password</p>
             </ul>
           </li>
         ) : (
           <li>
-            <Link to="/signup" className='btn-login'>
+            <button className='btn-login' onClick={()=>toggleLoginPopup(true)}>
               Register for New Skills
-            </Link>
+            </button>
+            <a href="https://canvas.instructure.com/login/canvas">
+              <button className='btn-login ml-2' >
+          LMS
+        </button>
+            </a>
           </li>
         )}
+        
            </Nav.Link>
           <Nav.Link id="tooltip">
             <FontAwesomeIcon icon={faPhoneAlt} />

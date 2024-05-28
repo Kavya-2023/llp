@@ -1,8 +1,12 @@
 import React from 'react';
 import './index.css'; // Import your CSS file
+import Footer from '../Footer';
+import NavBar from '../Navbar';
 
 const ReturnsAndRefunds = () => {
   return (
+    <>
+    <NavBar/>
     <div className="returns-and-refunds-container">
       <h2>Returns & Refunds Policy</h2>
 
@@ -64,6 +68,8 @@ const ReturnsAndRefunds = () => {
       </div>
 
     </div>
+    <Footer/>
+    </>
   );
 }
 

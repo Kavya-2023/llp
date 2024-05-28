@@ -89,7 +89,9 @@
     color:white;
 }
 .user-icon{
-    color:#081F62
+    color:#081F62;
+    padding-top: .5rem;
+    
 }
 
 .btn-login{
@@ -110,15 +112,13 @@
  #tooltip {
      position: relative;
      cursor: pointer;
-     border-bottom: 2px dotted;
-     padding: 7px;
+     padding-top: 1rem;
      font-weight: bold;
  }
 
  #tooltiptext {
      position: absolute;
      left: 0;
-     bottom: -150%;
      transform: translateX(-50%);
      background-color: #081F62;
      color: #fff;
@@ -141,7 +141,7 @@
  }
 
  #tooltip:hover #tooltiptext {
-     bottom: -200%;
+     bottom: -150%;
      visibility: visible;
      opacity: 1;
  }

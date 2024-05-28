@@ -59,8 +59,8 @@ const SubCourse = () => {
               <article key={subCourse._id} className="shadow-lg m-2 p-3 rounded-lg w-[250px]">
                 <h2 className="text-xl">{subCourse.course}</h2>
                 <div className='flex justify-between py-2'>
-                  <p className="text-sm pl-3 pt-3 text-gray-600">Free</p>
-                  <button onClick={() => addToCart(subCourse._id, subCourse.course,0)} className="px-1 text-sm border-1 hover:border-black rounded-md">Enroll Now</button>
+                  <p className="text-sm pl-3 pt-3 text-gray-600">{subCourse.price_in_rupees !==0?"Rs."+subCourse.price_in_rupees:"Free"}</p>
+                  <button onClick={() => addToCart(subCourse._id, subCourse.course,subCourse.price_in_rupees)} className="px-1 text-sm border-1 hover:border-black rounded-md">Enroll Now</button>
                 </div>
               </article>
             ))}
