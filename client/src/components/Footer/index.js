@@ -48,12 +48,12 @@ function Footer() {
         <div className='bg-transparent max-w-[1240px] mx-auto grid sm:grid-cols-1  md:grid-cols-2   lg:grid-cols-3 border-b-2 border-gray-600 py-8'>
           {
             sections.map((item,index)=>(
-              <div className='bg-transparent' key={index}>
+              <div className='bg-slate-900' key={index}>
                 <h6 className='font-bold uppercase pt-2 bg-transparent'>{item.title}</h6>
-                <ul className='bg-transparent flex-start flex flex-col'>
+                <ul className='bg-slate-900 flex-start flex flex-col'>
                   {item.items.map((it,i)=>(
                     <Link to={`/${it.toLowerCase()}`} className='no-underline hover:no-underline'>
-                    <li key={i} className=' bg-transparent py-1 text-gray-500 hover:text-white cursor-pointer'>
+                    <li key={i} className=' bg-slate-900 py-1 text-gray-500 hover:text-white cursor-pointer'>
                       {it}
                     </li>
                     </Link>
@@ -81,12 +81,12 @@ function Footer() {
           <div className="bg-transparent">
               © 2023 Nanoquest All rights reserved.
             </div>
-            <div className="bg-transparent ">
-              <ul className='bg-transparent flex justify-between text-2xl w-[200px]'>
+            <div className="bg-slate-900">
+              <ul className='bg-slate-900 flex justify-between text-2xl w-[200px]'>
                 {
                   socialicons.map((item,ind)=>{
                     return <a href={`${item.link}`}>
-                      <item.icon key={ind} className='bg-transparent text-white hover:text-gray-400 cursor-pointer'/>
+                      <item.icon key={ind} className=' text-white bg-slate-900 hover:text-gray-400 cursor-pointer'/>
                     </a>
                   })
                 }

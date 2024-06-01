@@ -118,10 +118,10 @@ const NavBar = ({toggleLoginPopup}) => {
               )}
               <div className="flex flex-col items-center border-t border-gray-200 mt-2 pt-2">
                     <button className="w-full text-center text-white  bg-slate-500 p-1 hover:bg-slate-800">
-                      <Link to='/cart' className='no-underline hover:no-underline text-white text-sm'>Cart</Link>
+                      <Link to='/cart' className='bg-transparent no-underline hover:no-underline text-white text-sm'>Cart</Link>
                     </button>
                     <button onClick={handleLogout} className="w-full text-center text-white  mt-1 bg-slate-500 p-1 hover:bg-slate-800">
-                      <Link to='#' className='no-underline hover:no-underline text-white text-sm'>Logout</Link>
+                      <Link to='#' className='bg-transparent no-underline hover:no-underline text-white text-sm'>Logout</Link>
                     </button>
               </div>
               <p className="text-center text-blue-500 hover:text-orange-400 cursor-pointer mt-2 text-sm" onClick={handleForgotPassword}>Change Password</p>

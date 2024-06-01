@@ -30,7 +30,7 @@ const Courses = () => {
     <>
       <NavBar />
       <div className="courses-container">
-        <h1 className='text-center text-violet-800 font-bold text-2xl mb-10 sm:mt-0'>Nanoquest Skills Categories</h1>
+        <h1 className='text-center text-blue-700 font-bold text-2xl mb-10 sm:mt-0'>Nanoquest Skills Categories</h1>
         {
           totalData === null ? (
             <Loader /> 

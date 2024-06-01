@@ -10,3 +10,4 @@
   RewriteRule ^(.*)$ https://www.nanoquesttech.in/$1 [R=301,L]
 
 </IfModule>
+

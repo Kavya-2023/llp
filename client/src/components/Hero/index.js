@@ -43,27 +43,27 @@ useEffect(() => {
   }, [startTyping]);
   return (
     <div>
-      <div className='logos treding-skills-container'>
+      <div className='logos treding-skills-container sm:disabled'>
         <h3 className='treding-heading'>Trending Skills</h3>
          <div className='logos-slide'>
             <div className=' trending-logo block'>
-              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349097/Default_artificial_inteliigence_1_eui3pb.jpg" alt="" className='logo-img'/>
+              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349097/Default_artificial_inteliigence_1_eui3pb.jpg" alt="" className=""   loading="lazy"/>
               <p>Artificial Intelligence</p>
             </div>
             <div className='trending-logo block'>
-              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349179/Default_internetof_things_1_x8jdr0.jpg" alt=""/>
+              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349179/Default_internetof_things_1_x8jdr0.jpg" alt="" loading="lazy"/>
               <p>Full Stack Development</p>
             </div>
             <div className='trending-logo block'>
-              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349750/Default_fintech_0_lpvjrj.jpg" alt=""/>
+              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349750/Default_fintech_0_lpvjrj.jpg" alt="" loading="lazy"/>
               <p>Fintech</p>
             </div>
             <div className='trending-logo block'>
-              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716347189/Default_virtual_reaity_1_v4tgtp.jpg" alt=""/>
+              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716347189/Default_virtual_reaity_1_v4tgtp.jpg" alt="" loading="lazy"/>
               <p>Game Tech</p>
             </div>
             <div className='trending-logo block'>
-              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349240/Default_gaming_technology_1_zrlzc1.jpg" alt=""/>
+              <img src="https://res.cloudinary.com/dyjkp0r0x/image/upload/v1716349240/Default_gaming_technology_1_zrlzc1.jpg" alt="" loading="lazy"/>
               <p>Generative AI</p>
             </div>
          </div>
@@ -129,6 +129,8 @@ useEffect(() => {
             src={desktopImg}
             alt="dresses to be noticed"
             className="home-desktop-img"
+            width="1200" height="800"
+            loading="lazy"
           />
         </div>  
         
@@ -172,7 +174,7 @@ useEffect(() => {
                   ease: "easeInOut",
                   duration: 1
                 }}
-                src={serviceImg1} alt="service-img" className='service-img'
+                src={serviceImg1} alt="service-img" className='service-img' loading="lazy"  width="400" height="300"
               />
             </div>
           </div>
@@ -212,7 +214,7 @@ useEffect(() => {
                   ease: "easeInOut",
                   duration: 1
                 }}
-                src={serviceImg2} alt="service-img" className='service-img'
+                src={serviceImg2} alt="service-img" className='service-img' loading="lazy"  width="400" height="300"
               />
             </div>
           </div>
@@ -228,7 +230,7 @@ useEffect(() => {
                   ease: "easeInOut",
                   duration: 1
                 }}
-                src={serviceImg3} alt="service-img" className='service-img'
+                src={serviceImg3} alt="service-img" className='service-img'  width="400" height="300"
               />
             </div>
             <div className='service-card-content'>
@@ -268,7 +270,7 @@ useEffect(() => {
                   ease: "easeInOut",
                   duration: 1
                 }}
-                src={serviceImg1} alt="service-img" className='service-img'
+                src={serviceImg1} alt="service-img" className='service-img' loading="lazy"  width="400" height="300"
               />
             </div>
             <div className='service-card-content'>
@@ -369,6 +371,8 @@ useEffect(() => {
           <motion.img
             src={wcu1} alt="wcu"
             whileHover={{ scale: 1.05 }}
+            width="400" height="300"
+            loading="lazy"
           />
           <div className='why-choose-card-content'>
             <motion.h3
@@ -391,6 +395,8 @@ useEffect(() => {
           <motion.img
             src={wcu2} alt="wcu"
             whileHover={{ scale: 1.05 }}
+            loading="lazy"
+            width="400" height="300"
           />
           <div className='why-choose-card-content'>
             <motion.h3

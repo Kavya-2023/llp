@@ -1,7 +1,8 @@
 import React from 'react'
 import './index.css';
 import Footer from '../Footer';
-import { Navbar } from 'react-bootstrap';
+import  Navbar  from '../Navbar';
+import linkedin from '../../assets/linkedin.png';
 const Teams = () => {
   return (
     <>
@@ -11,20 +12,20 @@ const Teams = () => {
   <div class="row-teams">
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=1027"/>
+          <a href="https://www.linkedin.com/company/nanoquesttech"><img class="img-fluid" src={linkedin}/></a>
         </div>
         <div class="team-content">
             <h3 class="name">Umadevi</h3>
-          <h4 class="title">CEO</h4>
+          <h4 class="title">Co-Founder</h4>
           
         </div>
       </div>
       <div class="our-team">
         <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=839"/>
+          <a href="https://www.linkedin.com/company/nanoquesttech"><img class="img-fluid" src={linkedin}/></a>
         </div>
         <div class="team-content">
-          <h3 class="name">Mahesh S Reddy</h3>
+          <h3 class="name">Maheshwara Reddy</h3>
           <h4 class="title">Founder and CEO</h4>
         </div>
     </div>

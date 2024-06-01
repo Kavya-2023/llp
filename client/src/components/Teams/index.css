@@ -17,18 +17,19 @@
 .our-team {
     padding: 30px 0 40px;
     margin-bottom: 30px;
-    background-color: #f7f5ec;
+    background-color: #fff;
     text-align: center;
     overflow: hidden;
     position: relative;
     margin: 4rem;
     width:300px;
+    border:2px solid black;
 }
 
 .our-team .picture {
     display: inline-block;
-    height: 130px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
     margin-bottom: 50px;
     z-index: 1;
     position: relative;

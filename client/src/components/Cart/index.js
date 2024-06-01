@@ -57,7 +57,7 @@ const Cart = () => {
   const handleCheckout = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/order", {
+      const response = await axios.post("https://llp-qxsy.onrender.com/order", {
         amount,
         currency,
         receipt: receiptId,

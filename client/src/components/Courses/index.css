@@ -53,7 +53,8 @@
 }
 
 .card__img {
-  width: 328px;
+  width: 300px;
+  height:250px;
   border-radius: 1.5rem;
 }
 

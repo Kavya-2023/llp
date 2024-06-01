@@ -52,7 +52,7 @@ const SubCourse = () => {
         <div className="overlay"></div>
         <div className="content bg-transparent">
           <h1 className='text-left font-bold text-sm text-gray-200 pt-2 mb-10  bg-transparent'>
-            <Link to='/courses' className='text-lg text-white bread-crum'>Courses</Link>/{category.category}
+            <Link to='/courses' className='text-lg text-white bread-crum bg-transparent'>Courses</Link>/{category.category}
           </h1>
           <div className="grid lg:grid-cols-4 bg-transparent h-100vh md:grid-cols-3 sm:grid-cols-2">
             {subCourses.map((subCourse) => (
