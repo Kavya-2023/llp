@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import users from '../models/auth.js';
 import { configuremail, sendLoginMail } from './common.js'; 
+import Register from '../models/register.js';
 export const signup = async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -22,6 +23,7 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
+    
     try {
         const existingUser = await users.findOne({ email });
         if (!existingUser) {
@@ -63,8 +65,6 @@ export const forgotpassword = async (req, res) => {
 
 export const resetpassword = async (req, res) => {
     const { id, token } = req.params;
-    console.log("Reset password request params:", req.params);
-
     try {
         const oldUser = await users.findOne({ _id: id });
         console.log("Old user:", oldUser);
@@ -92,7 +92,7 @@ export const resetpassword = async (req, res) => {
             );
 
             
-            return res.send("<script>alert('Do you want to Login?'); window.location.href='http://localhost:3000/login';</script>");
+            return res.send("<script>alert('Do you want to Login?'); window.location.href='https://llp-qxsy.onrender.com/user/login';</script>");
         } else {
             
             return res.render("index", { email: email ,status:"Verified"});
@@ -102,5 +102,16 @@ export const resetpassword = async (req, res) => {
         return res.send("Not verified");
     }
 };
+
+export const userRegister=async(req,res)=>{
+    const {name,mobile,skill}=req.body;
+    try{
+        const response=await Register.create({name,mobile,skill});
+        res.status(200).json({ success: true, message: "Registered successfully" });
+    }
+    catch(err){
+        res.status(500).json({ success: false, message: "Something went wrong..." });
+    }
+}
 
 

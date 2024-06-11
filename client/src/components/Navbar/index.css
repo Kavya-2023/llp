@@ -123,7 +123,7 @@
      background-color: #081F62;
      color: #fff;
      white-space: nowrap;
-     padding: 10px 15px;
+     padding: 5px 15px;
      border-radius: 7px;
      visibility: hidden;
      opacity: 0;
@@ -141,7 +141,7 @@
  }
 
  #tooltip:hover #tooltiptext {
-     bottom: -150%;
+     bottom: -80%;
      visibility: visible;
      opacity: 1;
  }

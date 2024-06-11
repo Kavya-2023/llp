@@ -7,6 +7,8 @@ import serviceImg2 from '../../assets/service-img-2.avif';
 import serviceImg3 from '../../assets/service-img-3.avif';
 import wcu1 from '../../assets/wcu-1.avif';
 import wcu2 from '../../assets/wcu-2.avif';
+import Carousel from '../Carousel';
+
 
 const Hero = ({toggleLoginPopup}) => {
     const [typedText, setTypedText] = useState("");
@@ -43,7 +45,7 @@ useEffect(() => {
   }, [startTyping]);
   return (
     <div>
-      <div className='logos treding-skills-container sm:disabled'>
+      {/*<div className='logos treding-skills-container sm:disabled'>
         <h3 className='treding-heading'>Trending Skills</h3>
          <div className='logos-slide'>
             <div className=' trending-logo block'>
@@ -67,8 +69,10 @@ useEffect(() => {
               <p>Generative AI</p>
             </div>
          </div>
-      </div>
-      <div className="home-container">
+  </div>*/}
+  
+      
+      <div className="home-container mt-3">
         <div className="home-content">
           <motion.h1
             initial={{ x: -100, opacity: 0 }}
@@ -135,6 +139,8 @@ useEffect(() => {
         </div>  
         
       </div>
+      <h2 className='mt-20 text-center text-gray-500'>Trending Skills</h2>
+      <Carousel/>
       
       <div className='services-container'>
         <div className='service-cards-container'>

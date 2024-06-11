@@ -44,7 +44,7 @@ function Footer() {
 
   return (
     <>
-      <div className='w-full mt-24 bg-slate-900 text-gray-300 py-2 px-2 sm:pl-3 md:pl-3' >
+      <div className='w-full  bg-slate-900 text-gray-300 py-2 px-2 sm:pl-3 md:pl-3' >
         <div className='bg-transparent max-w-[1240px] mx-auto grid sm:grid-cols-1  md:grid-cols-2   lg:grid-cols-3 border-b-2 border-gray-600 py-8'>
           {
             sections.map((item,index)=>(

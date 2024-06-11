@@ -132,10 +132,10 @@ const NavBar = ({toggleLoginPopup}) => {
             <button className='btn-login' onClick={()=>toggleLoginPopup(true)}>
               Register for New Skills
             </button>
-            <a href="https://canvas.instructure.com/login/canvas">
-              <button className='btn-login ml-2' >
+            <a href="https://canvas.instructure.com/login/canvas" target="_blank"  className='btn-login ml-2'>
+              
           LMS
-        </button>
+       
             </a>
           </li>
         )}
@@ -144,7 +144,7 @@ const NavBar = ({toggleLoginPopup}) => {
           <Nav.Link id="tooltip">
             <FontAwesomeIcon icon={faPhoneAlt} />
             <span id="tooltiptext">
-              support@nanoquesttech.in<br/> 040-49170923
+             040-49170923
             </span>
           </Nav.Link>
         </Nav>

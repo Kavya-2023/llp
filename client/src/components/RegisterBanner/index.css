@@ -1,0 +1,13 @@
+/* index.css */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50; /* Ensures the modal is on top */
+}
+
+.bg-opacity-75 {
+  background-opacity: 0.75;
+}

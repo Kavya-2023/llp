@@ -26,6 +26,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // CORS configuration
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 const allowedOrigins = ['http://localhost:3000', 'https://www.nanoquesttech.in', 'https://llp-qxsy.onrender.com','http://localhost:5000'];
 app.use(cors({
   origin: function(origin, callback) {
@@ -47,8 +52,8 @@ app.use('/contactus', contactusRoutes);
 app.post("/order", async (req, res) => {
     try {
         const razorpay = new Razorpay({
-            key_id:"rzp_test_g4B23bPxPm08cC",
-            key_secret:"Y4VzmO9dXHsdU8mUbfC3fKJE"
+            key_id:"rzp_test_NgGFz8D718klWM",
+            key_secret:"1VJT94EBUNQOwP0anlz8C6OV"
         });
         const options = req.body;
         const order = await razorpay.orders.create(options);
@@ -69,7 +74,7 @@ app.post("/order", async (req, res) => {
 app.post('/order/validate', async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-    const sha = crypto.createHmac("sha256","Y4VzmO9dXHsdU8mUbfC3fKJE");
+    const sha = crypto.createHmac("sha256","1VJT94EBUNQOwP0anlz8C6OV");
     sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
     const signature = sha.digest("hex");
 
