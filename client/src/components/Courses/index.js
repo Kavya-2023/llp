@@ -28,7 +28,7 @@ const Courses = () => {
 
   return (
     <>
-      <NavBar />
+      
       <div className="courses-container">
         <h1 className='text-center text-blue-700 font-bold text-2xl mb-10 sm:mt-0'>Nanoquest Skills Categories</h1>
         {
@@ -51,7 +51,7 @@ const Courses = () => {
           )
         }
       </div>
-      <Footer/>
+     
     </>
   );
 };

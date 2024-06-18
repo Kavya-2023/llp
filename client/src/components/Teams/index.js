@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.css';
-import Footer from '../Footer';
-import  Navbar  from '../Navbar';
+
+
 import linkedin from '../../assets/linkedin.png';
 const Teams = () => {
   return (
     <>
-    <Navbar/>
+    
     <div class="teams-container">
         <h2>Our Team</h2>
   <div class="row-teams">
@@ -31,7 +31,7 @@ const Teams = () => {
     </div>
   </div>
 </div>
-<Footer/>
+
     </>
   )
 }

@@ -66,7 +66,7 @@ const Cart = () => {
       const order = response.data;
 
       const options = {
-        key: "rzp_test_g4B23bPxPm08cC",
+        key: "rzp_test_NgGFz8D718klWM",
         amount,
         currency,
         name: "NANOQUEST LLP",
@@ -157,7 +157,7 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen">
-      <NavBar />
+      
       <div className="pt-20 mx-auto max-w-6xl px-4">
         <h2 className="text-gray-800 text-2xl text-center mb-6">Bag Your Skills</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -224,7 +224,7 @@ const Cart = () => {
           </div>
         </div>
       )}
-      <Footer />
+      
     </div>
   );
 };

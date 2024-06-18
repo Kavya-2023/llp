@@ -5,7 +5,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import blog1 from '../../assets/logo.png';
 import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import Cookies from 'js-cookie';
-import { auth, signInWithGoogle } from '../../firebase';
+import { auth, signInWithGoogle, logInWithEmailAndPassword, registerWithEmailAndPassword } from '../../firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +20,9 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && user) navigate('/');
+    if (!loading && user) {
+      navigate('/');
+    }
   }, [user, loading, navigate]);
 
   const togglePasswordVisibility = () => {
@@ -29,18 +33,20 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
     const storedEmail = localStorage.getItem('email');
     if (storedEmail) {
       toggleLoginPopup(false);
+      
       navigate('/');
     }
-  }, [navigate]);
+  }, [navigate,email]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert('Please enter email and password');
+      toast.error('Please enter email and password');
       return;
     }
 
     try {
+      await logInWithEmailAndPassword(email, password); // Firebase login
       const response = await axios.post(
         'https://llp-qxsy.onrender.com/user/login',
         { email, password },
@@ -58,23 +64,45 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
       Cookies.set('jwt_token', token, { expires: 30, path: '/' });
 
       navigate('/');
+      toast.success('Login successful');
     } catch (error) {
       console.error('Login failed:', error);
+      setError('Login failed. Please try again.');
+      toast.error('Login failed. Please try again.');
     }
 
     setEmail('');
     setPassword('');
   };
 
+  const handleFirebaseLogin = async () => {
+    try {
+      await signInWithGoogle();
+      toggleLoginPopup(false);
+      toast.success('Login with Google successful');
+    } catch (error) {
+      console.error('Firebase login failed:', error);
+      toast.error('Firebase login failed. Please try again.');
+    }
+  };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if (!email || !password || !name) {
+      toast.error('Please enter all fields');
+      return;
+    }
+
     try {
+      await registerWithEmailAndPassword(name, email, password); // Firebase registration
       const response = await axios.post('https://llp-qxsy.onrender.com/user/signup', { name, email, password });
       console.log('Sign up successful:', response.data);
       setShowSignIn(!showSignIn);
+      toast.success('Sign up successful. Please log in.');
     } catch (err) {
       console.error('Sign up error:', err);
       setError('Sign up failed. Please try again.');
+      toast.error('Sign up failed. Please try again.');
     }
     setName('');
     setEmail('');
@@ -83,6 +111,7 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
 
   return (
     <>
+      <ToastContainer />
       {!loginPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 overflow-y-auto pt-[140px]">
           <div className="relative h-auto w-[80%] sm:w-[80%] md:w-[50%] lg:w-[50%] xl:w-[30%] bg-white rounded-xl shadow-lg m-3">
@@ -113,8 +142,7 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
                       id="username"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="mt-1 p-1 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring
-                       -blue-300 focus:border-transparent text-sm"
+                      className="mt-1 p-1 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent text-sm"
                     />
                   </div>
                 )}
@@ -143,7 +171,7 @@ const LoginPopup = ({ toggleLoginPopup, loginPopup }) => {
                 <button
                   type="button"
                   className="w-full flex items-center justify-center bg-red-500 text-white py-1 rounded-full hover:bg-red-600"
-                  onClick={signInWithGoogle}
+                  onClick={handleFirebaseLogin}
                 >
                   <FaGoogle className="mr-2 bg-transparent" /> Google
                 </button>

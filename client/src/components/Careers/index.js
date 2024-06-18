@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from '../Navbar';
+
 import './index.css';
-import Footer from '../Footer';
+
 
 const Careers = () => {
   return (
     <>
-    <NavBar/>
+    
     <div className='career-cards-container grid grid-cols-1'>
       <h3>Join Skill Revolution Platform</h3>
       <div className='careers-card'>
@@ -46,7 +46,7 @@ const Careers = () => {
         </a>
       </div>
   </div>
-  <Footer/>
+  
     </>
     
   );

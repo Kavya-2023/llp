@@ -11,7 +11,7 @@ import Footer from '../Footer';
 const Blog = () => {
   return (
     <>
-    <NavBar/>
+    
     <h1 className='blog-heading'>Our Blogs</h1>
     <div className='blogs-container'>
       
@@ -52,7 +52,7 @@ const Blog = () => {
         </Link>
       </motion.div>
     </div>
-    <Footer/>
+    
     </>
     
   )

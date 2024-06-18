@@ -12,13 +12,8 @@
     padding: 0 100px;
 }
 
-.nav-link.active {
-    border-bottom: 2px solid #081F62;
-    
-}
-.navbar-container .dropdown-item:hover {
-    border-bottom: 2px solid #081F62;
-}
+
+
 .profiledropdown {
     display: none;
     position: absolute;

@@ -8,7 +8,7 @@ import LoginPopup from '../LoginPopup';
 
 const Home = () => {
   const [loginPopup, setLoginPopup] = useState(false);
-  const [registerModal, setRegisterModal] = useState(true); 
+  const [registerModal, setRegisterModal] = useState(true);
 
   const toggleLoginPopup = () => {
     setLoginPopup(!loginPopup);
@@ -19,15 +19,15 @@ const Home = () => {
   };
 
   useEffect(() => {
-    setRegisterModal(true); 
+    setRegisterModal(true);
   }, []);
 
   return (
     <>
       <Navbar toggleLoginPopup={toggleLoginPopup} />
       <Hero toggleLoginPopup={toggleLoginPopup} />
-      <Footer />
-      <LoginPopup toggleLoginPopup={toggleLoginPopup} loginPopup={loginPopup} />
+      
+      {loginPopup && <LoginPopup toggleLoginPopup={toggleLoginPopup} />}
       {registerModal && (
         <div className="fixed inset-x-0 top-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
           <div className="relative bg-white p-8 rounded-lg shadow-lg w-96 mt-20">
