@@ -56,8 +56,8 @@ app.use('/contactus', contactusRoutes);
 app.post("/order", async (req, res) => {
   try {
     const razorpay = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID_P,
-      key_secret: process.env.RAZORPAY_KEY_SECRET_P
+      key_id: "rzp_test_NgGFz8D718klWM",
+      key_secret: "1VJT94EBUNQOwP0anlz8C6OV"
     });
     const options = req.body;
     const order = await razorpay.orders.create(options);
@@ -76,7 +76,7 @@ app.post("/order", async (req, res) => {
 app.post('/order/validate', async (req, res) => {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-  const sha = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET_P);
+  const sha = crypto.createHmac("sha256", "1VJT94EBUNQOwP0anlz8C6OV");
   sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
   const signature = sha.digest("hex");
 
