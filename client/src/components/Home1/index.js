@@ -8,7 +8,7 @@ import LoginPopup from '../LoginPopup';
 
 const Home = () => {
   const [loginPopup, setLoginPopup] = useState(false);
-  const [registerModal, setRegisterModal] = useState(true);
+  const [registerModal, setRegisterModal] = useState(false);
 
   const toggleLoginPopup = () => {
     setLoginPopup(!loginPopup);
@@ -16,10 +16,16 @@ const Home = () => {
 
   const closeRegisterModal = () => {
     setRegisterModal(false);
+    // Set a flag in localStorage to indicate that the user has seen the register banner
+    localStorage.setItem('hasSeenRegisterBanner', 'true');
   };
 
   useEffect(() => {
-    setRegisterModal(true);
+    // Check if the user has already seen the register banner
+    const hasSeenRegisterBanner = localStorage.getItem('hasSeenRegisterBanner');
+    if (!hasSeenRegisterBanner) {
+      setRegisterModal(true);
+    }
   }, []);
 
   return (

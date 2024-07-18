@@ -32,7 +32,7 @@ const NavBar = ({ toggleLoginPopup }) => {
         setUserData(userResponse.data);
         setEnrolledCourses(coursesResponse.data.courseNames);
       } else {
-        throw new Error('Failed to fetch user data');
+        console.log('Failed to fetch user data');
       }
     } catch (error) {
       console.error(error);
@@ -77,7 +77,6 @@ const NavBar = ({ toggleLoginPopup }) => {
         <Nav className="mr-auto" style={{ backgroundColor: "transparent" }}>
           <Nav.Link href="/" className="nav-link" active={location.pathname === "/"}>Home</Nav.Link>
           <Nav.Link href="courses" className="nav-link" active={location.pathname === "/courses"}>Skills</Nav.Link>
-          <Nav.Link href="/" className="nav-link" active={location.pathname === "/products"}>Products</Nav.Link>
           <NavDropdown title="Company" id="collasible-nav-dropdown" style={{ backgroundColor: "transparent" }}>
             <NavDropdown.Item href="aboutus">About Us</NavDropdown.Item>
             <NavDropdown.Item href="contactus">Contact Us</NavDropdown.Item>
@@ -96,15 +95,23 @@ const NavBar = ({ toggleLoginPopup }) => {
                   {userData ? (
                     <div className="w-1/3 mt-4 rounded-lg">
                       <div className="flex items-center justify-center w-20 h-20 bg-gray-600 text-white font-bold rounded-full ml-24 text-xl">
-                        {userEmail[0].toUpperCase()}
+                        {userData.name[0].toUpperCase()}
                       </div>
                       <div className='mt-4'>
                         <h6 className="text-sm font-semibold text-left">EnrolledSkills:</h6>
-                        <ul className='list-disc pl-4 text-left text-gray-400'>
-                          {enrolledCourses.map((course, index) => (
-                            <li key={index}>{course}</li>
-                          ))}
-                        </ul>
+                        {
+                          enrolledCourses.length === 0 ? (
+                            <div className="enroll-text">
+                              <p>Enroll New Courses</p>
+                            </div>
+                          ) : (
+                            <ul className='list-disc pl-4 text-left text-gray-400'>
+                              {enrolledCourses.map((course, index) => (
+                                <li key={index}>{course}</li>
+                              ))}
+                            </ul>
+                          )
+                        }
                       </div>
                     </div>
                   ) : (

@@ -28,7 +28,7 @@ const RegisterBanner = () => {
   return (
     <div className="w-full">
       <h2 className="text-2xl font-bold mb-6 text-center">Online Registration</h2>
-      <p className='text-sm text-gray-400 text-center'>New Batches starts from july onwords</p>
+      <p className='text-sm text-gray-400 text-center'>Register now to unlock your potential with our online courses</p>
       <form onSubmit={onRegister}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>

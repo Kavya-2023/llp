@@ -68,7 +68,7 @@ const SubCourse = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      
     </>
   );
 }

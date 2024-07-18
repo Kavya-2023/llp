@@ -140,3 +140,9 @@
      visibility: visible;
      opacity: 1;
  }
+
+ .enroll-text p {
+    display: inline;
+    white-space: nowrap;
+  }
+  

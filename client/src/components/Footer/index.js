@@ -35,7 +35,7 @@ const socialicons=[
   },
   {
     icon:FaLinkedin,
-    link:"https://www.linkedin.com/company/100962715"
+    link:"https://www.linkedin.com/company/nanoquesttech"
   }
 ]
 
